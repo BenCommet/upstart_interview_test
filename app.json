@@ -2,6 +2,7 @@
   "expo": {
     "name": "upstart_interview_test",
     "slug": "upstart_interview_test",
+    "scheme": "upstart-interview-test",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,7 +25,16 @@
       "predictiveBackGestureEnabled": false
     },
     "web": {
+      "bundler": "metro",
+      "output": "static",
       "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-web-browser"
+    ],
+    "experiments": {
+      "typedRoutes": true
     }
   }
 }
