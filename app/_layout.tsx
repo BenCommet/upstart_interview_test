@@ -4,6 +4,7 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ title: 'Home' }} />
+      <Stack.Screen name="loginSuccessScreen" options={{ title: 'Login Success' }} />
     </Stack>
   );
 }
