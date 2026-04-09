@@ -1,24 +1,27 @@
 import { router } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native';
+import { dummySuccessApi } from '@/api';
 
 export default function HomeScreen() {
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [submitDisabled, setSubmitDisabled] = useState(false);
 
 
-  function handleSubmit(){
-    router.replace('/loginSuccessScreen')
+  async function handleSubmit(){
+    setSubmitDisabled(true);
+    let result = await dummySuccessApi();
+    setSubmitDisabled(false);
+    router.replace({pathname: '/loginSuccessScreen', params: {result}})
   }
 
   return (
     <View style={styles.container}>
       <TextInput  placeholder='Username' onChangeText={setUsername} value={username}/>
       <TextInput  placeholder='Password' onChangeText={setPassword} value={password}/>
-      <Button title='submit' onPress={handleSubmit}/>
-      <StatusBar style="auto" />
+      <Button title='Submit' onPress={handleSubmit} disabled={submitDisabled}/>
     </View>
   );
 }
